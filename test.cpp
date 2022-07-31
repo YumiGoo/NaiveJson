@@ -43,11 +43,21 @@ static void testParseFalse() {
     EXPECT_EQ_INT(JSON_FALSE, jsonGetType(&v));
 }
 
-static void testParseInvalid() {
+inline void testParseError(int error, const char* json) {
     json_value v;
     v.type = JSON_NULL;
-    EXPECT_EQ_INT(JSON_PARSE_EXPECT_VALUE, jsonParse(&v, ""));
-    EXPECT_EQ_INT(JSON_PARSE_ROOT_NOT_SINGULAR, jsonParse(&v, "null   m"));
+    EXPECT_EQ_INT(error, jsonParse(&v, json));
+}
+
+static void testParseInvalid() {
+    // json_value v;
+    // v.type = JSON_NULL;
+    // EXPECT_EQ_INT(JSON_PARSE_EXPECT_VALUE, jsonParse(&v, ""));
+    // EXPECT_EQ_INT(JSON_PARSE_ROOT_NOT_SINGULAR, jsonParse(&v, "null   m"));
+    testParseError(JSON_PARSE_EXPECT_VALUE, "");
+    testParseError(JSON_PARSE_ROOT_NOT_SINGULAR, "null m");
+    testParseError(JSON_PARSE_INVALID_VALUE, "+117");
+    testParseError(JSON_PARSE_INVALID_VALUE, "1-1");
 }
 
 static void testParse() {

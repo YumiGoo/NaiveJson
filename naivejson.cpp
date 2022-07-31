@@ -14,13 +14,14 @@ typedef struct {
 // };
 // 是一样的
 
-//去除前导空格
+//去除空格
 void jsonParseWhitespace(json_context* c) {
     const char* p = c->json;
     while (*p == ' ' || *p == '\t' || *p == '\n' || *p == '\r') ++p;
     c->json = p;
 }
 
+//类型：Null
 int jsonParseNull(json_context* c, json_value* v) {
     assert(*c->json == 'n');
     ++c->json;
@@ -32,6 +33,7 @@ int jsonParseNull(json_context* c, json_value* v) {
     return JSON_PARSE_OK;
 }
 
+//类型：True
 int jsonParseTrue(json_context* c, json_value* v) {
     assert(*c->json == 't');
     ++c->json;
@@ -43,6 +45,7 @@ int jsonParseTrue(json_context* c, json_value* v) {
     return JSON_PARSE_OK;
 }
 
+//类型：False
 int jsonParseFalse(json_context* c, json_value* v) {
     assert(*c->json == 'f');
     ++c->json;
@@ -74,13 +77,22 @@ int jsonParse(json_value* jv, const char* json) {
     assert(jv != nullptr);
     json_context c;
     c.json = json;
+    int ret;
     jv->type = JSON_NULL;
-    jsonParseWhitespace(&c);
-    return jsonParseValue(&c, jv);
+    jsonParseWhitespace(&c);//去除前导空格
+    if ((ret = jsonParseValue(&c, jv))!= JSON_PARSE_OK) return ret;
+    jsonParseWhitespace(&c);//去除末尾空格
+    if (c.json[0] != '\0') return JSON_PARSE_ROOT_NOT_SINGULAR;
+    return JSON_PARSE_OK;
 }
 
 //返回jv结构体的json类型
 int jsonGetType(const json_value* jv) {
     assert(jv != nullptr);
     return jv->type;
+}
+
+double jsonGetNum(const json_value* jv) {
+    assert(jv != nullptr && jv->type == JSON_NUM);
+    return jv->num;
 }

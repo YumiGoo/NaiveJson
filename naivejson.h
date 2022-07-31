@@ -7,6 +7,7 @@ typedef enum {JSON_NULL, JSON_FALSE, JSON_TRUE, JSON_NUM, JSON_STR, jSON_ARRAY, 
 //json结构体
 typedef struct {
     json_type type;
+    double num;
 } json_value;
 
 enum {
@@ -18,6 +19,7 @@ enum {
 
 int jsonParse(json_value* jv, const char* json);
 int jsonGetType(const json_value* jv);
+double jsonGetNum(const json_value* jv);
 int jsonGenerate(const json_value* jv, char* json);
 
 // #endif

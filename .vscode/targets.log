@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 31 14:19:36 2022
+# Make data base, printed on Sun Jul 31 22:21:04 2022
 
 # Variables
 
@@ -65,11 +63,10 @@ CONDA_PREFIX = /home/zmt/anaconda3
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-088c4cb5-ec71-4c65-8c0a-d408c557d4a7.sock
+VSCODE_IPC_HOOK_CLI = /run/user/1002/vscode-ipc-af28fd74-666e-4dc2-80e0-863618bd930f.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
- 
 LS_COLORS = 
 # automatic
 %F = $(notdir $%)
@@ -141,7 +138,6 @@ BROWSER = /home/zmt/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/
 VSCODE_HANDLES_SIGPIPE = true
 # default
 MAKEFILES := 
- 
 # automatic
 <F = $(notdir $<)
 # environment
@@ -175,10 +171,9 @@ _CE_CONDA =
 
 # Directories
 
-# . (device 66306, inode 8389773): 9 files, no impossibilities.
+# . (device 66306, inode 8389773): 10 files, no impossibilities.
 
- 
-# 9 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -210,7 +205,6 @@ makefile:
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -229,12 +223,14 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 168 B / avg = 9 B
-# current buf: size = 8162 B / used = 168 B / count = 17 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 18 / storage = 174 B / avg = 9 B
+# current buf: size = 8162 B / used = 174 B / count = 18 / avg = 9 B
 
-# strcache performance: lookups = 20 / hit rate = 15%
+# strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
-# Finished Make data base on Sun Jul 31 14:19:36 2022
+# Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
+# Finished Make data base on Sun Jul 31 22:21:04 2022
 
  
+make: *** No rule to make target 'all'.  Stop.
+
