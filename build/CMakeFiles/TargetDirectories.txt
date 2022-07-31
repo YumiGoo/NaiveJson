@@ -1,0 +1,4 @@
+/home/zmt/projects/NaiveJson/build/CMakeFiles/rebuild_cache.dir
+/home/zmt/projects/NaiveJson/build/CMakeFiles/edit_cache.dir
+/home/zmt/projects/NaiveJson/build/CMakeFiles/test.dir
+/home/zmt/projects/NaiveJson/build/CMakeFiles/naivejson.dir

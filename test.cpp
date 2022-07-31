@@ -31,20 +31,30 @@ static void testParseNull() {
 
 static void testParseTrue() {
     json_value v;
-    v.type = JSON_TRUE;
+    v.type = JSON_NULL;
     EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, "true"));
     EXPECT_EQ_INT(JSON_TRUE, jsonGetType(&v));
 }
 
 static void testParseFalse() {
     json_value v;
-    v.type = JSON_TRUE;
+    v.type = JSON_NULL;
     EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, "false"));
     EXPECT_EQ_INT(JSON_FALSE, jsonGetType(&v));
 }
 
+static void testParseInvalid() {
+    json_value v;
+    v.type = JSON_NULL;
+    EXPECT_EQ_INT(JSON_PARSE_EXPECT_VALUE, jsonParse(&v, ""));
+    EXPECT_EQ_INT(JSON_PARSE_ROOT_NOT_SINGULAR, jsonParse(&v, "null   m"));
+}
+
 static void testParse() {
     testParseNull();
+    testParseFalse();
+    testParseTrue();
+    testParseInvalid();
 }
 
 int main() {

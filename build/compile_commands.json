@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/zmt/projects/NaiveJson/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/test.dir/test.cpp.o -c /home/zmt/projects/NaiveJson/test.cpp",
+  "file": "/home/zmt/projects/NaiveJson/test.cpp"
+},
+{
+  "directory": "/home/zmt/projects/NaiveJson/build",
+  "command": "/usr/bin/g++    -g   -o CMakeFiles/naivejson.dir/naivejson.cpp.o -c /home/zmt/projects/NaiveJson/naivejson.cpp",
+  "file": "/home/zmt/projects/NaiveJson/naivejson.cpp"
+}
+]

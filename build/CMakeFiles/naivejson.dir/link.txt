@@ -1,0 +1,2 @@
+/usr/bin/ar qc libnaivejson.a  CMakeFiles/naivejson.dir/naivejson.cpp.o
+/usr/bin/ranlib libnaivejson.a

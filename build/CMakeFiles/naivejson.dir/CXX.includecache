@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/zmt/projects/NaiveJson/naivejson.cpp
+assert.h
+-
+naivejson.h
+/home/zmt/projects/NaiveJson/naivejson.h
+
+/home/zmt/projects/NaiveJson/naivejson.h
+

@@ -4,6 +4,7 @@
 //受到标准保护，但是无法解决宏名碰撞问题，且解析更慢。
 
 typedef enum {JSON_NULL, JSON_FALSE, JSON_TRUE, JSON_NUM, JSON_STR, jSON_ARRAY, JSON_OBJ} json_type;
+//json结构体
 typedef struct {
     json_type type;
 } json_value;
