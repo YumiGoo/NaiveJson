@@ -6,7 +6,7 @@
 // #include <stdlib.h>
 #include <string>
 #include <iostream>
-#include "tinyjson.h"
+#include "naivejson.h"
 
 static int main_ret = 0;
 static int test_count = 0;

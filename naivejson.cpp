@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "tinyjson.h"
+#include "naivejson.h"
 
 typedef struct {
     const char* json;
