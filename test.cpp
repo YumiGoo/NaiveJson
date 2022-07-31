@@ -22,31 +22,52 @@ static int test_pass = 0;
 
 #define EXPECT_EQ_INT(expect, actual) EXPECT_EQ_BASE((expect == actual), expect, actual, "%d")
 
-static void testParseNull() {
-    json_value v;
-    v.type = JSON_TRUE;
-    EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, "null"));
-    EXPECT_EQ_INT(JSON_NULL, jsonGetType(&v));
-}
+// static void testParseNull() {
+//     json_value v;
+//     v.type = JSON_TRUE;
+//     EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, "null"));
+//     EXPECT_EQ_INT(JSON_NULL, jsonGetType(&v));
+// }
 
-static void testParseTrue() {
+// static void testParseTrue() {
+//     json_value v;
+//     v.type = JSON_NULL;
+//     EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, "true"));
+//     EXPECT_EQ_INT(JSON_TRUE, jsonGetType(&v));
+// }
+
+// static void testParseFalse() {
+//     json_value v;
+//     v.type = JSON_NULL;
+//     EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, "false"));
+//     EXPECT_EQ_INT(JSON_FALSE, jsonGetType(&v));
+// }
+
+inline void testParseType(json_type type, const char* json) {
     json_value v;
     v.type = JSON_NULL;
-    EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, "true"));
-    EXPECT_EQ_INT(JSON_TRUE, jsonGetType(&v));
+    if (type == JSON_NULL) v.type = JSON_TRUE; //当要测试NULL时初始值不能是NULL
+    EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, json));
+    EXPECT_EQ_INT(type, jsonGetType(&v)); 
 }
 
-static void testParseFalse() {
+inline void testParseNum(int num, const char* json) {
     json_value v;
-    v.type = JSON_NULL;
-    EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, "false"));
-    EXPECT_EQ_INT(JSON_FALSE, jsonGetType(&v));
+    EXPECT_EQ_INT(JSON_PARSE_OK, jsonParse(&v, json));
+    EXPECT_EQ_INT(JSON_NUM, jsonGetType(&v)); 
+    EXPECT_EQ_INT(num, jsonGetNum(&v));
 }
 
 inline void testParseError(int error, const char* json) {
     json_value v;
     v.type = JSON_NULL;
     EXPECT_EQ_INT(error, jsonParse(&v, json));
+}
+static void testParseValid() {
+    testParseType(JSON_NULL, "null");
+    testParseType(JSON_TRUE, "true");
+    testParseType(JSON_FALSE, "false");
+    testParseType(JSON_NUM, "10");
 }
 
 static void testParseInvalid() {
@@ -56,14 +77,18 @@ static void testParseInvalid() {
     // EXPECT_EQ_INT(JSON_PARSE_ROOT_NOT_SINGULAR, jsonParse(&v, "null   m"));
     testParseError(JSON_PARSE_EXPECT_VALUE, "");
     testParseError(JSON_PARSE_ROOT_NOT_SINGULAR, "null m");
+    testParseError(JSON_PARSE_ROOT_NOT_SINGULAR, "false m");
+    testParseError(JSON_PARSE_ROOT_NOT_SINGULAR, "100 m");
     testParseError(JSON_PARSE_INVALID_VALUE, "+117");
     testParseError(JSON_PARSE_INVALID_VALUE, "1-1");
+    testParseError(JSON_PARSE_INVALID_VALUE, "01");
 }
 
 static void testParse() {
-    testParseNull();
-    testParseFalse();
-    testParseTrue();
+    // testParseNull();
+    // testParseFalse();
+    // testParseTrue();
+    testParseValid();
     testParseInvalid();
 }
 

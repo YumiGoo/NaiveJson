@@ -57,7 +57,13 @@ int jsonParseFalse(json_context* c, json_value* v) {
     return JSON_PARSE_OK;
 }
 
+//类型：字符串
 // int jsonParseStr(json_context* c, json_value* v) {
+
+// }
+
+//类型：数字
+// int jsonParseNum(json_context* c, json_value* v) {
 
 // }
 
